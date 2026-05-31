@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Garrafão Seguro — Análise do Campeonato</title>
+<title>Campeonato de Basquete — Competition 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -68,9 +68,21 @@ table.st tr:last-child td{border-bottom:none}
 </head>
 <body>
 <nav>
-  <h1>Garrafão Seguro</h1>
+  <div style="display:flex;align-items:center;gap:10px;padding:0 1.25rem 1rem">
+    <svg width="44" height="44" viewBox="0 0 136 124" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;flex-shrink:0">
+  <rect x="0" y="0" width="136" height="124" rx="14" fill="#EF9F27"/>
+  <text x="68" y="57" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="44" font-weight="700" fill="#2C2C2A" letter-spacing="-1">COMP</text>
+  <rect x="24" y="68" width="88" height="2" fill="#2C2C2A" opacity=".22"/>
+  <text x="68" y="98" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="500" fill="#2C2C2A" opacity=".72" letter-spacing="4">2026</text>
+</svg>
+    <div>
+      <p style="font-size:12px;font-weight:600;color:var(--tx);line-height:1.3;margin:0">Campeonato de Basquete</p>
+      <p style="font-size:11px;color:var(--mu);line-height:1.2;margin:0">Competition 2026</p>
+    </div>
+  </div>
   <button onclick="printAll()" style="display:block;margin:.25rem 1.25rem .75rem;padding:.5rem .75rem;border-radius:6px;border:1px solid var(--bd);background:var(--sf2);cursor:pointer;font-size:12px;width:calc(100% - 2.5rem);text-align:left;">🖨️ Salvar PDF</button>
   <a href="#" data-section="liga" class="active">🏆 Liga</a>
+  <a href="#" data-section="glossario">📖 Glossário</a>
   <div class="div"></div>
     <a href="#" data-section="AMARELO">AMARELO</a>
   <a href="#" data-section="AZUL">AZUL</a>
@@ -170,6 +182,124 @@ table.st tr:last-child td{border-bottom:none}
   <h3>Confrontos diretos — head to head</h3>
   <div id="lg-h2h"></div>
 
+
+</section>
+
+
+<section id="glossario">
+  <h2>Glossário</h2>
+  <p class="sub">Abreviações, fórmulas e guia de leitura dos gráficos</p>
+
+  <!-- ESTATÍSTICAS BÁSICAS -->
+  <h3>Estatísticas básicas — do boxscore FIBA</h3>
+  <div class="cw" style="overflow-x:auto">
+    <table class="ht" style="font-size:13px">
+      <thead><tr><th style="width:90px">Sigla</th><th>Nome</th><th>O que mede</th></tr></thead>
+      <tbody>
+        <tr><td><b>MIN</b></td><td>Minutos</td><td>Tempo total que o jogador passou em quadra</td></tr>
+        <tr><td><b>PT</b></td><td>Pontos</td><td>Total de pontos marcados</td></tr>
+        <tr><td><b>REB</b></td><td>Rebotes</td><td>Total de rebotes coletados (defensivos + ofensivos)</td></tr>
+        <tr><td><b>REB D</b></td><td>Rebote Defensivo</td><td>Rebotes coletados após erros do adversário</td></tr>
+        <tr><td><b>REB O</b></td><td>Rebote Ofensivo</td><td>Rebotes coletados após erros do próprio time (segunda posse)</td></tr>
+        <tr><td><b>ASS</b></td><td>Assistências</td><td>Passes que resultam diretamente em cesta convertida</td></tr>
+        <tr><td><b>ROU</b></td><td>Roubos de bola</td><td>Steals — tomou a posse da bola do adversário</td></tr>
+        <tr><td><b>TOC</b></td><td>Tocos</td><td>Bloqueios de arremessos adversários</td></tr>
+        <tr><td><b>LL / LLT</b></td><td>Lance livre (convertidos / tentados)</td><td>Lances livres na linha de fundo</td></tr>
+        <tr><td><b>2PT / 2PTT</b></td><td>Arremessos de 2pts</td><td>Cestas de 2 pontos convertidas / tentadas</td></tr>
+        <tr><td><b>3PT / 3PTT</b></td><td>Arremessos de 3pts</td><td>Cestas de 3 pontos convertidas / tentadas</td></tr>
+        <tr><td><b>+/−</b></td><td>Plus/Minus</td><td>Diferencial de pontos enquanto o jogador está em quadra. +5 = o time marcou 5 pts a mais do que sofreu com ele em quadra</td></tr>
+        <tr><td><b>F</b></td><td>Faltas</td><td>Faltas pessoais cometidas</td></tr>
+        <tr><td><b>ERR</b></td><td>Turnovers</td><td>Perdas de posse para o adversário (passes errados, dribles perdidos, violações)</td></tr>
+        <tr><td><b>EFI</b></td><td>Eficiência</td><td>Índice Martin Manley (1986): <code>(PTS + REB + ASS + ROU + TOC) − (Arremessos errados + TO)</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MÉTRICAS CALCULADAS POR JOGADOR -->
+  <h3>Métricas calculadas por jogador</h3>
+  <div class="cw" style="overflow-x:auto">
+    <table class="ht" style="font-size:13px">
+      <thead><tr><th style="width:100px">Métrica</th><th>Fórmula</th><th>Interpretação</th></tr></thead>
+      <tbody>
+        <tr><td><b>EFI/36</b></td><td><code>EFI × 36 / MIN</code></td><td>Eficiência normalizada por tempo. Permite comparar jogadores com cargas de minutos diferentes. Um reserva eficiente aparece tão bem quanto um titular que joga mais.</td></tr>
+        <tr><td><b>TS%</b></td><td><code>PTS / (2 × (FGA + 0,44 × FTA))</code></td><td>True Shooting % — eficiência real de finalização, ponderando 2PT, 3PT e lances livres juntos. Mais honesto que 2PT% e 3PT% isolados. Média boa: ≥ 50%.</td></tr>
+        <tr><td><b>2PT% / 3PT%</b></td><td><code>Cestas conv. / Tentativas</code></td><td>Aproveitamento de arremesso por categoria. 2PT% médio recreativo: ~35-45%. 3PT% médio: ~25-35%.</td></tr>
+        <tr><td><b>PPG / RPG / APG</b></td><td><code>Estatística / Jogos</code></td><td>Médias por jogo de pontos, rebotes e assistências.</td></tr>
+        <tr><td><b>+/− médio</b></td><td><code>Σ(+/−) / Jogos</code></td><td>Impacto médio por jogo. O melhor indicador de impacto coletivo — captura coisas que a EFI não captura (defesa posicional, presença física, gestão de posse).</td></tr>
+        <tr><td><b>AST/TO</b></td><td><code>Assistências / Turnovers</code></td><td>Qualidade de distribuição. Ratio ≥ 2 = excelente. 1–2 = aceitável. &lt; 1 = perde mais do que cria.</td></tr>
+        <tr><td><b>Desvio padrão EFI</b></td><td><code>√(variância dos EFI por jogo)</code></td><td>Mede consistência. Desvio baixo = jogador previsível e confiável. Desvio alto = pode ser brilhante ou desaparecer.</td></tr>
+        <tr><td><b>EFI em V / D</b></td><td><code>Média EFI em vitórias vs derrotas</code></td><td>Revela quem eleva o nível nos jogos difíceis e quem acumula stats com o jogo decidido.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MÉTRICAS AVANÇADAS DE TIME -->
+  <h3>Métricas avançadas de time (Four Factors + Ratings)</h3>
+  <div class="cw" style="overflow-x:auto">
+    <table class="ht" style="font-size:13px">
+      <thead><tr><th style="width:100px">Métrica</th><th>Fórmula</th><th>Interpretação</th></tr></thead>
+      <tbody>
+        <tr><td><b>eFG%</b></td><td><code>(FGM + 0,5 × 3PM) / FGA</code></td><td>Effective Field Goal % — pondera o fato de que cestas de 3 valem mais. Melhor medida de eficiência ofensiva bruta do que 2PT% isolado.</td></tr>
+        <tr><td><b>TOV%</b></td><td><code>TOV / (FGA + 0,44 × FTA + TOV)</code></td><td>Turnover rate — % de posses que terminam em perda de bola. Menor é melhor.</td></tr>
+        <tr><td><b>OREB%</b></td><td><code>OREB / (OREB + DREB adversário)</code></td><td>% dos rebotes ofensivos disponíveis que o time capturou. Maior = mais segundas posses.</td></tr>
+        <tr><td><b>FT Rate</b></td><td><code>FTA / FGA</code></td><td>Frequência com que o time vai à linha. Indica agressividade no ataque e pressão sobre a defesa adversária.</td></tr>
+        <tr><td><b>Possessões</b></td><td><code>FGA − OREB + TOV + 0,44 × FTA</code></td><td>Estimativa do número de posses por jogo.</td></tr>
+        <tr><td><b>ORtg</b></td><td><code>100 × PTS / Possessões</code></td><td>Offensive Rating — pontos marcados por 100 possessões. Normaliza por ritmo de jogo. Maior = melhor ataque.</td></tr>
+        <tr><td><b>DRtg</b></td><td><code>100 × PTS sofridos / Posses adversário</code></td><td>Defensive Rating — pontos sofridos por 100 possessões. Menor = melhor defesa.</td></tr>
+        <tr><td><b>Net Rating</b></td><td><code>ORtg − DRtg</code></td><td>Saldo por 100 possessões. Melhor indicador de qualidade geral do time, normalizado pelo ritmo.</td></tr>
+        <tr><td><b>Pace</b></td><td><code>(Posses + Posses adversário) / 2 / Jogos</code></td><td>Ritmo de jogo — posses por jogo. Times com Pace alto jogam mais rápido e têm mais possessões por partida.</td></tr>
+        <tr><td><b>SRS</b></td><td><code>Saldo médio/jogo + ajuste iterativo pelos adversários</code></td><td>Simple Rating System — mais honesto que o saldo bruto porque considera a força dos adversários enfrentados. +5 significa que o time é aproximadamente 5 pontos melhor que a média da liga.</td></tr>
+        <tr><td><b>Expectativa Pitagórica</b></td><td><code>PF¹⁴ / (PF¹⁴ + PA¹⁴)</code></td><td>Vitórias esperadas baseadas no saldo de pontos. Times com vitórias reais &gt; esperadas estão "com sorte". Times abaixo estão perdendo jogos que "deveriam" ganhar.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GUIA DE LEITURA DOS GRÁFICOS -->
+  <h3>Guia de leitura dos gráficos</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px">
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">📈 Pontuação por quarto</p>
+    <p style="font-size:13px">Linhas mostram os pontos marcados em cada quarto (Q1–Q4) para cada jogo. Verde = vitória, vermelho = derrota. <b>Padrão crítico:</b> linhas que caem no Q4 indicam colapso no período decisivo — o sinal mais relevante de um time que não fecha jogos.</p></div>
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">📊 EFI/36 min</p>
+    <p style="font-size:13px">Barras verdes = acima da média do time; cinzas = abaixo. A linha pontilhada é a média. Jogadores abaixo da linha estão puxando a eficiência do time para baixo quando em quadra. Jogadores acima deveriam receber mais minutos.</p></div>
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">🎯 Aproveitamento de arremesso</p>
+    <p style="font-size:13px">Barras laranja (2PT%) e azul (3PT%) por jogador. Só aparece para jogadores com 5+ tentativas. Regra prática: 3PT% abaixo de 20% com 10+ tentativas — o jogador deveria parar de arremessar de 3.</p></div>
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">📍 Mapa de valor (min × EFI/36)</p>
+    <p style="font-size:13px">Scatter onde eixo X = minutos totais e Y = EFI/36. A linha horizontal é a média do time. <b>Quadrante ideal:</b> direita-cima (muitos minutos, alta eficiência). Jogadores à esquerda-cima estão sendo subaproveitados. Direita-baixo = sobrecarregados.</p></div>
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">🎯 AST/TO ratio</p>
+    <p style="font-size:13px">Verde ≥ 2 (excelente), amarelo 1–2 (aceitável), vermelho &lt; 1 (cria menos do que desperdiça). Jogadores sem turnovers aparecem no teto do gráfico. O armador principal deveria ter ratio ≥ 2 consistentemente.</p></div>
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">🔵 Consistência (EFI médio × desvio)</p>
+    <p style="font-size:13px">Scatter onde X = EFI médio por jogo (melhor) e Y = desvio padrão (inconsistência). <b>Ideal:</b> direita-baixo (alto rendimento, baixa variação). Em jogos decisivos, aposte nos jogadores no canto direito-inferior — são os que você sabe o que vai ter.</p></div>
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">🟩 EFI heatmap por jogo</p>
+    <p style="font-size:13px">Verde escuro ≥ 10 (excelente), verde claro 3–9 (bom), cinza 0–2 (neutro), vermelho (negativo). Leia por linha para ver consistência do jogador; por coluna para ver o desempenho coletivo naquele jogo.</p></div>
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">🕸️ Radar comparativo de times</p>
+    <p style="font-size:13px">6 eixos normalizados 0–100 dentro do campeonato. "Bola Segura" e "Defesa" já estão invertidos (menor TOV% / menor DRtg = maior valor no eixo). Um time com polígono grande e equilibrado domina em múltiplas dimensões.</p></div>
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">📉 ORtg vs DRtg (scatter de time)</p>
+    <p style="font-size:13px">Eixo X = ORtg (maior = melhor ataque), eixo Y = DRtg invertido (maior no gráfico = menor DRtg = melhor defesa). O time ideal fica no canto superior-direito. As linhas pontilhadas são as médias da liga.</p></div>
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">📊 Expectativa pitagórica</p>
+    <p style="font-size:13px">Barras azul claro = vitórias esperadas pelo saldo de pontos; azul escuro = vitórias reais. Time com real &gt; esperado está "com sorte" (vencendo close games). Real &lt; esperado está desperdiçando vantagem de pontos — tende a regularizar.</p></div>
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">📈 Fluxo do jogo (momentum)</p>
+    <p style="font-size:13px">Linha mostra o diferencial de pontos ao longo do jogo (equipe A − equipe B). Verde = equipe A na frente, vermelho = equipe B na frente. <b>Atenção:</b> o eixo X representa sequência de cestas por quarto, não tempo real — não há relógio no scoresheet FIBA.</p></div>
+
+    <div class="cw"><p style="font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;margin-bottom:8px">🔄 Evolução por rodada</p>
+    <p style="font-size:13px">Saldo de pontos (PF − PA) de cada time em cada rodada. Pontos cheios = vitória; vazios = derrota. Revela momentum — time em alta tem pontos subindo; em crise, caindo. Com poucas rodadas, cada jogo tem peso grande.</p></div>
+
+  </div>
+
+  <h3>Nota sobre tamanho de amostra</h3>
+  <div class="cw">
+    <p style="font-size:13px;line-height:1.8">Com <b>2–4 jogos por time</b>, todas as métricas têm alta variância. Um Net Rating de +15 em 2 jogos pode ser reflexo de 2 adversários fracos, não qualidade real do time. A tabela de Four Factors exibe o número de jogos (coluna <b>n</b>) com ⚠ quando n ≤ 2 — nesses casos, trate os números como <em>tendência</em>, não como fato consolidado. Métricas baseadas em 6+ jogos começam a ser estatisticamente mais confiáveis.</p>
+  </div>
 
 </section>
 
